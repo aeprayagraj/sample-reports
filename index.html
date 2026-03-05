@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Aero Eagle Reports</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+padding-top:120px;
+}
+
+.container{
+background:white;
+padding:40px;
+width:400px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input{
+padding:10px;
+width:200px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+background:#0078D4;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+#content{
+display:none;
+margin-top:30px;
+}
+
+a{
+display:block;
+margin:12px;
+padding:12px;
+background:#0078D4;
+color:white;
+text-decoration:none;
+border-radius:5px;
+}
+
+</style>
+
+<script>
+
+function checkPassword(){
+
+var password = document.getElementById("password").value;
+
+if(password === "Aero123"){
+document.getElementById("login").style.display="none";
+document.getElementById("content").style.display="block";
+}
+else{
+alert("Incorrect Password");
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="login">
+
+<h2>Aero Eagle Report Portal</h2>
+
+<p>Enter Password to Access Reports</p>
+
+<input type="password" id="password" placeholder="Enter password">
+
+<br>
+
+<button onclick="checkPassword()">Submit</button>
+
+</div>
+
+<div id="content">
+
+<h3>Download Reports</h3>
+
+<a href="https://1drv.ms/b/c/bccc0999596dc156/IQA0Nh1CBJIOTL9s0FAGevqAAeW-1S0Gbvxh-4TLOd2G6uA?e=ouqQdc" target="_blank">
+Download AIR Sample Report
+</a>
+
+<a href="https://1drv.ms/f/c/bccc0999596dc156/IgAems0Sx265Q7NrukbupHN9AeGx3mbtifTPQyVGXl_0gNE?e=VAEecS" target="_blank">
+Download 10 days Sample Report
+</a>
+
+<a href="https://1drv.ms/f/c/bccc0999596dc156/IgAG6VzKc779Qa59vy10AJs1AdGdwGWedv0b2jgW7_TbCu8?e=t4lVsM" target="_blank">
+Download Daily Inspection Sample Report
+</a>
+
+<a href="https://1drv.ms/f/c/bccc0999596dc156/IgDe8tOpM6-dSo_E2kbNbZF0AegOAc53sRFKhQZrnFNt8bo?e=bNCP03" target="_blank">
+Download High Voltage System Sample Report
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
