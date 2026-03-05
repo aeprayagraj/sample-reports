@@ -147,7 +147,7 @@ document.getElementById("password").value="";
 
 }
 
-/* PASSWORD TOGGLE */
+/* PASSWORD SHOW/HIDE */
 
 function togglePassword(){
 
@@ -161,7 +161,7 @@ input.type="password";
 
 }
 
-/* ENTER KEY LOGIN */
+/* ENTER KEY LOGIN + ERROR RESET */
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -172,8 +172,6 @@ if(event.key === "Enter"){
 checkPassword();
 }
 });
-
-/* remove error when typing */
 
 input.addEventListener("input", function(){
 document.getElementById("error").style.display="none";
@@ -188,7 +186,10 @@ function logout(){
 
 document.getElementById("content").style.display="none";
 document.getElementById("login").style.display="block";
+
 document.getElementById("password").value="";
+document.getElementById("error").style.display="none";
+document.getElementById("password").style.borderColor="#ccc";
 
 }
 
