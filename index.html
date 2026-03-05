@@ -13,8 +13,6 @@ text-align:center;
 padding-top:100px;
 }
 
-/* MAIN BOX */
-
 .container{
 background:white;
 padding:40px;
@@ -24,17 +22,12 @@ border-radius:12px;
 box-shadow:0 6px 18px rgba(0,0,0,0.15);
 }
 
-/* HEADINGS */
+/* PASSWORD BOX */
 
-h2{
-margin-bottom:5px;
+.password-box{
+position:relative;
+display:inline-block;
 }
-
-h3{
-margin-top:30px;
-}
-
-/* PASSWORD INPUT */
 
 input{
 padding:12px;
@@ -51,7 +44,22 @@ outline:none;
 box-shadow:0 0 5px rgba(0,120,212,0.4);
 }
 
-/* BUTTON */
+/* EYE ICON */
+
+.eye{
+position:absolute;
+right:20px;
+top:20px;
+cursor:pointer;
+font-size:18px;
+color:#777;
+}
+
+.eye:hover{
+color:#000;
+}
+
+/* LOGIN BUTTON */
 
 button{
 padding:10px 24px;
@@ -98,8 +106,6 @@ margin-top:10px;
 font-size:14px;
 }
 
-/* HIDE CONTENT */
-
 #content{
 display:none;
 margin-top:25px;
@@ -118,16 +124,33 @@ if(password === "Aero123"){
 document.getElementById("login").style.display="none";
 document.getElementById("content").style.display="block";
 
-}
-else{
+}else{
 
 document.getElementById("error").style.display="block";
+document.getElementById("password").style.borderColor="#e74c3c";
 
 }
 
 }
 
-/* ENTER KEY SUPPORT */
+/* SHOW HIDE PASSWORD */
+
+function togglePassword(){
+
+var input = document.getElementById("password");
+var eye = document.getElementById("eye");
+
+if(input.type === "password"){
+input.type = "text";
+eye.innerHTML="🙈";
+}else{
+input.type = "password";
+eye.innerHTML="👁";
+}
+
+}
+
+/* ENTER KEY LOGIN */
 
 document.addEventListener("DOMContentLoaded", function(){
 document.getElementById("password").addEventListener("keypress", function(event){
@@ -152,7 +175,13 @@ checkPassword();
 
 <p>Enter Password to Access Reports</p>
 
+<div class="password-box">
+
 <input type="password" id="password" placeholder="Enter password">
+
+<span id="eye" class="eye" onclick="togglePassword()">👁</span>
+
+</div>
 
 <br>
 
@@ -163,7 +192,6 @@ Wrong Password. Please try again.
 </div>
 
 </div>
-
 
 <div id="content">
 
