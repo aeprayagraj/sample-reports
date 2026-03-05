@@ -22,7 +22,11 @@ border-radius:12px;
 box-shadow:0 6px 18px rgba(0,0,0,0.15);
 }
 
-/* PASSWORD BOX */
+h2{
+margin-bottom:5px;
+}
+
+/* PASSWORD FIELD */
 
 .password-box{
 position:relative;
@@ -31,7 +35,7 @@ display:inline-block;
 
 input{
 padding:12px;
-width:220px;
+width:240px;
 margin:10px;
 border:2px solid #ccc;
 border-radius:6px;
@@ -44,19 +48,15 @@ outline:none;
 box-shadow:0 0 5px rgba(0,120,212,0.4);
 }
 
-/* EYE ICON */
+/* EYE BUTTON */
 
 .eye{
 position:absolute;
 right:20px;
-top:20px;
+top:22px;
 cursor:pointer;
 font-size:18px;
-color:#777;
-}
-
-.eye:hover{
-color:#000;
+color:#666;
 }
 
 /* LOGIN BUTTON */
@@ -94,6 +94,17 @@ background:#005fa3;
 transform:scale(1.03);
 }
 
+/* LOGOUT BUTTON */
+
+.logout{
+background:#e74c3c;
+margin-top:25px;
+}
+
+.logout:hover{
+background:#c0392b;
+}
+
 /* ERROR MESSAGE */
 
 #error{
@@ -115,6 +126,8 @@ margin-top:25px;
 
 <script>
 
+/* PASSWORD CHECK */
+
 function checkPassword(){
 
 var password = document.getElementById("password").value;
@@ -128,24 +141,22 @@ document.getElementById("content").style.display="block";
 
 document.getElementById("error").style.display="block";
 document.getElementById("password").style.borderColor="#e74c3c";
+document.getElementById("password").value="";
 
 }
 
 }
 
-/* SHOW HIDE PASSWORD */
+/* PASSWORD TOGGLE */
 
 function togglePassword(){
 
 var input = document.getElementById("password");
-var eye = document.getElementById("eye");
 
 if(input.type === "password"){
-input.type = "text";
-eye.innerHTML="🙈";
+input.type="text";
 }else{
-input.type = "password";
-eye.innerHTML="👁";
+input.type="password";
 }
 
 }
@@ -153,12 +164,33 @@ eye.innerHTML="👁";
 /* ENTER KEY LOGIN */
 
 document.addEventListener("DOMContentLoaded", function(){
-document.getElementById("password").addEventListener("keypress", function(event){
+
+var input = document.getElementById("password");
+
+input.addEventListener("keypress", function(event){
 if(event.key === "Enter"){
 checkPassword();
 }
 });
+
+/* remove error when typing */
+
+input.addEventListener("input", function(){
+document.getElementById("error").style.display="none";
+input.style.borderColor="#ccc";
 });
+
+});
+
+/* LOGOUT FUNCTION */
+
+function logout(){
+
+document.getElementById("content").style.display="none";
+document.getElementById("login").style.display="block";
+document.getElementById("password").value="";
+
+}
 
 </script>
 
@@ -179,7 +211,7 @@ checkPassword();
 
 <input type="password" id="password" placeholder="Enter password">
 
-<span id="eye" class="eye" onclick="togglePassword()">👁</span>
+<span class="eye" onclick="togglePassword()">👁</span>
 
 </div>
 
@@ -192,6 +224,7 @@ Wrong Password. Please try again.
 </div>
 
 </div>
+
 
 <div id="content">
 
@@ -212,6 +245,8 @@ Wrong Password. Please try again.
 <a href="https://1drv.ms/b/c/bccc0999596dc156/IQCSNYmtDarCS7-_y27oCCtaAY14vel4YzBpFg35lCS-BYM?e=UcuIc5" download>
 📄 High Voltage System Sample Report
 </a>
+
+<button class="logout" onclick="logout()">Logout</button>
 
 </div>
 
