@@ -2,54 +2,107 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Aero Eagle Reports</title>
+<title>Aero Eagle Reports Portal</title>
 
 <style>
 
 body{
-font-family:Arial;
-background:#f5f5f5;
+font-family:Arial, sans-serif;
+background:#f4f6f8;
 text-align:center;
-padding-top:120px;
+padding-top:100px;
 }
+
+/* MAIN BOX */
 
 .container{
 background:white;
 padding:40px;
-width:400px;
+width:420px;
 margin:auto;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+border-radius:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.15);
 }
 
-input{
-padding:10px;
-width:200px;
-margin:10px;
+/* HEADINGS */
+
+h2{
+margin-bottom:5px;
 }
 
-button{
-padding:10px 20px;
-background:#0078D4;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
-
-#content{
-display:none;
+h3{
 margin-top:30px;
 }
 
+/* PASSWORD INPUT */
+
+input{
+padding:12px;
+width:220px;
+margin:10px;
+border:2px solid #ccc;
+border-radius:6px;
+font-size:14px;
+}
+
+input:focus{
+border-color:#0078D4;
+outline:none;
+box-shadow:0 0 5px rgba(0,120,212,0.4);
+}
+
+/* BUTTON */
+
+button{
+padding:10px 24px;
+background:#0078D4;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:15px;
+}
+
+button:hover{
+background:#005fa3;
+}
+
+/* DOWNLOAD BUTTONS */
+
 a{
 display:block;
-margin:12px;
-padding:12px;
+margin:14px;
+padding:13px;
 background:#0078D4;
 color:white;
 text-decoration:none;
+border-radius:6px;
+font-size:15px;
+transition:0.3s;
+}
+
+a:hover{
+background:#005fa3;
+transform:scale(1.03);
+}
+
+/* ERROR MESSAGE */
+
+#error{
+color:white;
+background:#e74c3c;
+padding:8px;
 border-radius:5px;
+display:none;
+margin-top:10px;
+font-size:14px;
+}
+
+/* HIDE CONTENT */
+
+#content{
+display:none;
+margin-top:25px;
 }
 
 </style>
@@ -61,14 +114,28 @@ function checkPassword(){
 var password = document.getElementById("password").value;
 
 if(password === "Aero123"){
+
 document.getElementById("login").style.display="none";
 document.getElementById("content").style.display="block";
+
 }
 else{
-alert("Incorrect Password");
+
+document.getElementById("error").style.display="block";
+
 }
 
 }
+
+/* ENTER KEY SUPPORT */
+
+document.addEventListener("DOMContentLoaded", function(){
+document.getElementById("password").addEventListener("keypress", function(event){
+if(event.key === "Enter"){
+checkPassword();
+}
+});
+});
 
 </script>
 
@@ -80,7 +147,8 @@ alert("Incorrect Password");
 
 <div id="login">
 
-<h2>Aero Eagle Report Portal</h2>
+<h2>Aero Eagle</h2>
+<p><b>Maintenance Report Portal</b></p>
 
 <p>Enter Password to Access Reports</p>
 
@@ -88,28 +156,33 @@ alert("Incorrect Password");
 
 <br>
 
-<button onclick="checkPassword()">Submit</button>
+<button onclick="checkPassword()">Login</button>
+
+<div id="error">
+Wrong Password. Please try again.
+</div>
 
 </div>
 
+
 <div id="content">
 
-<h3>Download Reports</h3>
+<h3>Download Sample Reports</h3>
 
-<a href="https://1drv.ms/b/c/bccc0999596dc156/IQA0Nh1CBJIOTL9s0FAGevqAAU_0r9TkjQc3Pxv0ylKFOTE?e=z8AuLv&download=1">
-Download AIR Sample Report
+<a href="https://1drv.ms/b/c/bccc0999596dc156/IQA0Nh1CBJIOTL9s0FAGevqAAU_0r9TkjQc3Pxv0ylKFOTE?e=z8AuLv" download>
+📄 AIR Sample Report
 </a>
 
-<a href="https://1drv.ms/b/c/bccc0999596dc156/IQCjsYvQXl0iQ6ubFMlnsePjAQ7OmQocyjA_DJXzruNgIYA?e=LJXMky&download=1">
-Download 10 days Sample Report
+<a href="https://1drv.ms/b/c/bccc0999596dc156/IQCjsYvQXl0iQ6ubFMlnsePjAQ7OmQocyjA_DJXzruNgIYA?e=LJXMky" download>
+📄 10 Days Maintenance Sample Report
 </a>
 
-<a href="https://1drv.ms/b/c/bccc0999596dc156/IQA1MpcHUAjVR4TkRxaMLuBXAesS0bN2_b4S6_i2f9SilnY?e=ArVk2Q&download=1">
-Download Daily Inspection Sample Report
+<a href="https://1drv.ms/b/c/bccc0999596dc156/IQA1MpcHUAjVR4TkRxaMLuBXAesS0bN2_b4S6_i2f9SilnY?e=ArVk2Q" download>
+📄 Daily Inspection Sample Report
 </a>
 
-<a href="https://1drv.ms/b/c/bccc0999596dc156/IQCSNYmtDarCS7-_y27oCCtaAY14vel4YzBpFg35lCS-BYM?e=UcuIc5&download=1">
-Download High Voltage System Sample Report
+<a href="https://1drv.ms/b/c/bccc0999596dc156/IQCSNYmtDarCS7-_y27oCCtaAY14vel4YzBpFg35lCS-BYM?e=UcuIc5" download>
+📄 High Voltage System Sample Report
 </a>
 
 </div>
